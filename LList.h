@@ -1,3 +1,6 @@
+#ifndef LLIST_H
+#define LLIST_H
+
 #include <iostream>
 #include <utility>
 #include <string>
@@ -124,3 +127,5 @@ class LList
 	Node * head;
 	int len;	
 };
+
+#endif

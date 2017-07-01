@@ -1,10 +1,13 @@
 #include <iostream>
-#include "LList.h"
 #include <string>
+#include "LList.h"
+#include "HashTable.h"
+
 using namespace std;
 
 int main()
 {
+/*
     LList<int,string> myList;
     int n = 98;
     bool found = false;
@@ -24,6 +27,9 @@ int main()
     myList.deleteItem(500);
     getRes = myList.getItem(n,found);
     cout << "item " << n << " has key: " << getRes << endl;
+*/
+
+    HashTable myTable;
 
 
     return 0;

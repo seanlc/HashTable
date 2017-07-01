@@ -1,11 +1,28 @@
+#ifndef HASHTABLE_H
+#define HASHTABLE_H
+
 #include "LList.h"
 #include <string>
+
+using namespace std;
+
 class HashTable
 {
   private:
     LList<int,string> * head;
     int len;
   public:
+    HashTable()
+    : head (new LList<int,string> [100]), len (100)
+    {}
+    HashTable(int numBuckets)
+    : head (new LList<int,string> [numBuckets]), len (numBuckets)
+    {}
+    ~HashTable()
+    {
+	delete [] head;
+	head = nullptr;
+    }
     void clear();
     bool containsValue(string val);
     bool containsKey(int key);
@@ -18,3 +35,5 @@ class HashTable
     int hash(int key);
 }
 ;
+
+#endif
