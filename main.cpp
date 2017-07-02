@@ -9,9 +9,6 @@ int main()
 {
 /*
     LList<int,string> myList;
-    int n = 98;
-    bool found = false;
-    string getRes = "";
     for(int i = 0; i < 100; ++i)
         myList.putItem(i, to_string(i*2));
     myList.print();
@@ -25,12 +22,13 @@ int main()
     myList.deleteItem(99);
     myList.print();
     myList.deleteItem(500);
-    getRes = myList.getItem(n,found);
-    cout << "item " << n << " has key: " << getRes << endl;
 */
 
     HashTable myTable(37);
     myTable.put(66666, "devil");
+    myTable.put(12345, "test");
+    myTable.print();
+    myTable.remove(12345);
     myTable.print();
 
     return 0;

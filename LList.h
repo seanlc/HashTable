@@ -53,20 +53,16 @@ class LList
 	{
 	    return len;
 	}
-        V getItem(K n, bool & found)
+        bool findItem(K n)
 	{
     	    Node * trav = head;
-    	    found = false;
-    	    V value;
+    	    bool found = false;
     	    for(; trav != nullptr; trav=trav->next )
     	    {
 		if(trav->val.first == n)
-		{
-	    	    value = trav->val.second;
 	    	    found = true;
-		}
     	    }
-    	    return value;   
+    	    return found;   
 	}
 	void putItem(K n, V val)
 	{
@@ -95,26 +91,27 @@ class LList
     	    else
 		cout << "the list is full\n";
 	}
-	void deleteItem(K n)
+	bool deleteItem(K n)
 	{
 	    Node * trav = head;
     	    Node * trail;
-    	    if(trav->val.first == n)
-    	    {
-		head = head->next;
-		delete trav;	
-    	    }
-    	    else
-    	    {
-		for(trav=trav->next; trav->val.first != n && trav->next != nullptr; trav=trav->next)
-	    	    trail = trav;
-        	if(trav->val.first == n)
-		{
-	    	    trail->next = trav->next;
-	    	    delete trav;
-		} 
-    	    }
+	    if(findItem(n))
+	    {
+    	        if(trav->val.first == n)
+		    head = head->next;
+    	        else
+    	        {
+		    for(trav=trav->next; trav->val.first != n && trav->next != nullptr; trav=trav->next)
+	    	        trail = trav;
+        	    if(trav->val.first == n)
+	    	        trail->next = trav->next;
+    	        }
+		delete trav;
+		--len;
+		return true;	
+	    }
     	    trav = nullptr;
+	    return false;
 	}
 	void print()
 	{   

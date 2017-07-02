@@ -46,17 +46,22 @@ class HashTable
 	buf[hashedIndex].putItem(key,val);
 	++numEle;	
     }
-    void remove(int key);
+    void remove(int key)
+    {
+	int bucket = hash(key);
+	if(buf[bucket].deleteItem(key))
+	    --numEle;
+    }	
     int size()
     {
 	return numEle;
     }
     void print()
     {
-	cout << "HashMap Contents\n";
+	cout << "HashMap Size: " << numEle << endl;
 	for(int i = 0; i < numBuck; ++i)
 	{
-	    cout << "bucket: " << i << " numEle: " << buf[i].getLength() << endl;
+	    cout << "bucket: " << i << " items: " << buf[i].getLength() << endl;
 	    buf[i].print();
 	}
     }
