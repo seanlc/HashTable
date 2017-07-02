@@ -64,6 +64,16 @@ class LList
     	    }
     	    return found;   
 	}
+	V getItem(K n)
+	{
+    	    Node * trav = head;
+    	    for(; trav != nullptr; trav=trav->next )
+    	    {
+		if(trav->val.first == n)
+	    	    return trav->val.second;
+    	    }
+    	    return nullptr;   
+	}
 	void putItem(K n, V val)
 	{
 	    Node * trav;

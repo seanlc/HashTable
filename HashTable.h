@@ -34,8 +34,28 @@ class HashTable
 	}
     }
     bool containsValue(string val);
-    bool containsKey(int key);
-    string get(int key);
+    bool containsKey(int key)
+    {
+	for(int i = 0; i < numBuck; ++i)
+	{
+	    if(buf[i].findItem(key))
+		return true;    
+	}
+	return false;
+    }
+    string get(int key)
+    {
+	string returnStr = "";
+        if(containsKey(key))
+	{
+	    for(int i = 0; i < numBuck; ++i)
+	    {
+	        if(buf[i].findItem(key))
+		   return buf[i].getItem(key);
+	    }
+	}
+	return returnStr;
+    }
     bool isEmpty()
     {
 	return numEle == 0;

@@ -23,13 +23,20 @@ int main()
     myList.print();
     myList.deleteItem(500);
 */
-
+    
+    string returnStr  = "";
     HashTable myTable(37);
     myTable.put(66666, "devil");
     myTable.put(12345, "test");
     myTable.print();
-    myTable.remove(12345);
-    myTable.print();
+    if(myTable.containsKey(1222))
+	cout << "found key\n";
+    else
+	cout << "did not find key\n";
+    returnStr = myTable.get(666);
+    cout << "key returned: " << returnStr << endl;
+//    myTable.remove(12345);
+//    myTable.print();
 
     return 0;
 }
