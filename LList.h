@@ -45,6 +45,10 @@ class LList
 	{
     	    return len == LIST_MAX;
 	}
+	bool isEmpty()
+	{
+	    return len == 0;
+	}
 	int getLength()
 	{
 	    return len;
@@ -113,11 +117,14 @@ class LList
     	    trav = nullptr;
 	}
 	void print()
-	{
-	    for ( Node * p = head; p != nullptr; p = p->next )
+	{   
+	    if(len > 0)
 	    {
-		cout << p->val.first << endl;
+	        for ( Node * p = head; p != nullptr; p = p->next )
+		    cout << "key: " << p->val.first << " val: " << p->val.second << endl;
 	    }
+	    else
+		   cout << "the list is empty\n";
 	}
     private:
 	struct Node {

@@ -29,8 +29,9 @@ int main()
     cout << "item " << n << " has key: " << getRes << endl;
 */
 
-    HashTable myTable;
-
+    HashTable myTable(37);
+    myTable.put(66666, "devil");
+    myTable.print();
 
     return 0;
 }

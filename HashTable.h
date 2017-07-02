@@ -3,36 +3,67 @@
 
 #include "LList.h"
 #include <string>
+#include <utility>
 
 using namespace std;
 
 class HashTable
 {
   private:
-    LList<int,string> * head;
-    int len;
+    LList<int,string> * buf;
+    int numEle;
+    int numBuck;
   public:
     HashTable()
-    : head (new LList<int,string> [100]), len (100)
+    : buf (new LList<int,string> [100]), numEle (0), numBuck (100)
     {}
     HashTable(int numBuckets)
-    : head (new LList<int,string> [numBuckets]), len (numBuckets)
+    : buf (new LList<int,string> [numBuckets]), numEle (0), numBuck (numBuckets)
     {}
     ~HashTable()
     {
-	delete [] head;
-	head = nullptr;
+	delete [] buf;
+	buf = nullptr;
     }
-    void clear();
+    void clear()
+    {
+	for(int i = 0; i < numBuck; ++i)
+	{
+	    if(! buf[i].isEmpty() )
+		buf[i].makeEmpty();
+	}
+    }
     bool containsValue(string val);
     bool containsKey(int key);
     string get(int key);
-    bool isEmpty();
-    void put(int key, string val);
+    bool isEmpty()
+    {
+	return numEle == 0;
+    }
+    void put(int key, string val)
+    {
+	int hashedIndex = hash(key);
+	buf[hashedIndex].putItem(key,val);
+	++numEle;	
+    }
     void remove(int key);
-    int size();
-    void print();
-    int hash(int key);
+    int size()
+    {
+	return numEle;
+    }
+    void print()
+    {
+	cout << "HashMap Contents\n";
+	for(int i = 0; i < numBuck; ++i)
+	{
+	    cout << "bucket: " << i << " numEle: " << buf[i].getLength() << endl;
+	    buf[i].print();
+	}
+    }
+    int hash(int key)
+    {
+	return key % numBuck;
+    }
 }
 ;
 
