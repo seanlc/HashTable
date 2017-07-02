@@ -33,7 +33,15 @@ class HashTable
 		buf[i].makeEmpty();
 	}
     }
-    bool containsValue(string val);
+    bool containsValue(string val)
+    {
+        for(int i = 0; i < numBuck; ++i)
+	{
+	    if(buf[i].findVal(val))
+		return true;
+	}
+	return false;
+    }
     bool containsKey(int key)
     {
 	for(int i = 0; i < numBuck; ++i)

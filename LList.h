@@ -53,6 +53,16 @@ class LList
 	{
 	    return len;
 	}
+	bool findVal(V val)
+	{
+	    Node * trav = head;
+	    for(; trav != nullptr; trav=trav->next)
+	    {
+		if(trav->val.second == val)
+		    return true;
+	    }
+	    return false;
+	}
         bool findItem(K n)
 	{
     	    Node * trav = head;
