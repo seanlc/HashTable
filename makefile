@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -std=c++11 -Wall -ggdb
 
-main: $(OBJS) main.cpp LList.h.gch HashTable.h.gch
+main: main.cpp LList.h.gch HashTable.h.gch
 	$(CC) $(CFLAGS) main.cpp -o main
 LList.h.gch: LList.h
 	$(CC) $(CFLAGS) LList.h
